@@ -47,10 +47,10 @@ class Signature extends Component{
         </Header>
 
          <Content>
-          <Form  style={{ marginVertical: 4, marginHorizontal: 2, padding: 0}}>
-            <Item inlineLabel>
-              <Input style={{borderWidth: 1, borderColor: '#ccc', borderTopLeftRadius: 2, borderBottomEndRadius: 2}} />
-              <Button danger><Text> 签名 </Text></Button>
+          <Form  style={{borderWidth: 1, borderColor: 'red', padding: 5}}>
+            <Item inlineLabel style={{marginLeft: 0}}>
+              <Input style={{borderWidth: 1, borderColor: '#ccc',borderRightWidth: 0, borderTopLeftRadius: 2, borderBottomLeftRadius: 2}} />
+              <Button danger style={{height: 50, paddingHorizontal: 16}}><Text> 签名 </Text></Button>
             </Item>
           </Form>
           <Grid style={{position: 'relative'}}>
@@ -65,7 +65,7 @@ class Signature extends Component{
             <View style={{ backgroundColor: '#fff', position: 'absolute', left: 150, top: 150, width: 100, height: 100, borderColor: 'red', borderWidth: 1}}></View>
           </Grid>
           <Button block danger>
-            <Text>保存</Text>
+            <Text>保存签名</Text>
           </Button>
         </Content>
       </Container>
