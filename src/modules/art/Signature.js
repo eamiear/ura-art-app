@@ -46,16 +46,18 @@ class Signature extends Component{
           <Right />
         </Header>
 
-         <Content>
-          <Form  style={{borderWidth: 1, borderColor: 'red', padding: 5}}>
+         <Content style={{padding: 5}}>
+          <Form>
             <Item inlineLabel style={{marginLeft: 0}}>
               <Input style={{borderWidth: 1, borderColor: '#ccc',borderRightWidth: 0, borderTopLeftRadius: 2, borderBottomLeftRadius: 2}} />
               <Button danger style={{height: 50, paddingHorizontal: 16}}><Text> 签名 </Text></Button>
             </Item>
           </Form>
-          <Grid style={{position: 'relative'}}>
+          <Grid style={{position: 'relative', marginTop: 10}}>
             <Row>
-              <Col style={{ backgroundColor: '#635DB7', height: 200, borderColor: '#777777', borderWidth: 1 }}></Col>
+              <Col style={{ backgroundColor: '#635DB7', height: 200, borderColor: '#777777', borderWidth: 1 }}>
+              
+              </Col>
               <Col style={{ backgroundColor: '#00CE9F', height: 200, borderColor: '#777777', borderWidth: 1 }}></Col>
             </Row>
             <Row>
@@ -64,8 +66,8 @@ class Signature extends Component{
             </Row>
             <View style={{ backgroundColor: '#fff', position: 'absolute', left: 150, top: 150, width: 100, height: 100, borderColor: 'red', borderWidth: 1}}></View>
           </Grid>
-          <Button block danger>
-            <Text>保存签名</Text>
+          <Button block danger style={{marginTop: 10}}>
+            <Text>保存签名.</Text>
           </Button>
         </Content>
       </Container>
