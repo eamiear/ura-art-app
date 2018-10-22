@@ -12,7 +12,7 @@ import {
   View
 } from 'react-native';
 // import DrawerNavigator from './src/modules/art/DrawerNavigator'
-import Signature from './src/modules/art/Signature'
+import SignView from './src/views/SignView'
 
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' +
@@ -21,9 +21,7 @@ import Signature from './src/modules/art/Signature'
 //     'Shake or press menu button for dev menu',
 // });
 
-type Props = {};
-
-export default class App extends Component<Props> {
+export default class App extends Component {
   // render() {
   //   return (
   //     <View style={styles.container}>
@@ -41,7 +39,7 @@ export default class App extends Component<Props> {
   // }
   render () {
     return (
-      <Signature></Signature>
+      <SignView></SignView>
     )
   }
 }
