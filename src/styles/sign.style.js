@@ -25,7 +25,8 @@ export default StyleSheet.create({
 
   },
   FormItemView: {
-
+    marginLeft: 0,
+    marginTop: 2
   },
   FormItemViewInput: {
     height: 40,
@@ -78,7 +79,9 @@ export default StyleSheet.create({
   },
   GalleryItemViewSignView: {
     maxWidth: '100%',
-    width: '100%'
+    // width: '100%',
+    width: 80,
+    height: 60,
   },
   GalleryQRCodeRectView: {
     backgroundColor: '#fff',

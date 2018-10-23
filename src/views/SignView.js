@@ -19,6 +19,7 @@ import {
   Row
 } from 'native-base';
 import { captureRef, captureScreen } from "react-native-view-shot";
+import ImagePicker from "react-native-image-picker";
 import GLOBAL_PARAMS from '../utils/global_params'
 import ToastUtils from '../utils/ToastUtils'
 import api from '../api/art';
@@ -36,7 +37,27 @@ export default class SignView extends PureComponent {
       text: '',
       style: '',
       color: '',
-      decorator: ''
+      decorator: '',
+      signProp1: {
+        uri: '',
+        style: '901',
+        color: '#cc2323'
+      },
+      signProp2: {
+        uri: '',
+        style: '',
+        color: ''
+      },
+      signProp3: {
+        uri: '',
+        style: '',
+        color: ''
+      },
+      signProp4: {
+        uri: '',
+        style: '',
+        color: ''
+      }
     }
   }
   componentWillMount () {
@@ -100,17 +121,68 @@ export default class SignView extends PureComponent {
   }
 
   _getSignNameImage () {
-    let {text, style, color, decorator} = this.state
-    api.getSignImage(text, style, color, decorator).then(res => {
-      console.log(res)
+    let {text, signProp1} = this.state
+    api.getSignImage(text, signProp1.style, signProp1.color, signProp1.decorator).then(res => {
+      this.setState({
+        uri: 'data:image/jpeg;base64,' + res.data.sign,
+        signProp1: {
+          uri: 'data:image/jpeg;base64,' + res.data.sign
+        }
+      })
+      console.log('xxx ', this.state.signProp1)
     })
+  }
+  selectPhotoTapped () {
+    const options = {
+      quality: 1.0,
+      maxWidth: 500,
+      maxHeight: 500,
+      storageOptions: {
+        skipBackup: true
+      }
+    };
+    // Launch Camera:
+    // ImagePicker.launchCamera(options, (response) => {
+    //   // Same code as in above section!
+    //   console.log(response)
+    // });
+
+    // Open Image Library:
+    // ImagePicker.launchImageLibrary(options, (response) => {
+    //   // Same code as in above section!
+    //   console.log(response)
+    // });
+    
+    ImagePicker.showImagePicker(options, async (response) => {
+      // console.log('Response = ', response);
+
+      if (response.didCancel) {
+        // console.log('User cancelled photo picker');
+      }
+      else if (response.error) {
+        // console.log('ImagePicker Error: ', response.error);
+      }
+      else if (response.customButton) {
+        // console.log('User tapped custom button: ', response.customButton);
+      }
+      else {
+        // You can also display the image using data:
+        // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+        console.log('selected photo ', response);
+        
+        // this.setState({
+        //   photoData: response
+        // });
+      }
+    });
   }
 
   _renderContentView () {
     return (
       <Content style={SignStyle.ContentView}>
         <Form>
-          <Item inlineLabel style={{marginLeft: 0}}>
+          <Item inlineLabel style={SignStyle.FormItemView}>
             <Button danger style={SignStyle.FormItemViewBtn}><Text> 背景 </Text></Button>
             {/* <Input style={SignStyle.FormItemViewInput} /> */}
             <Input 
@@ -124,7 +196,22 @@ export default class SignView extends PureComponent {
               returnKeyType="done"/>
             <Button danger style={SignStyle.FormItemViewBtn} onPress={() => this._getSignNameImage()}><Text> 签名 </Text></Button>
           </Item>
+          <Item inlineLabel style={SignStyle.FormItemView}>
+            <Row>
+              <Col style={SignStyle.ButtonWrapperSplitLine}>
+                <Button block danger>
+                  <Text>样式</Text>
+                </Button>
+              </Col>
+              <Col>
+                <Button block danger>
+                  <Text>颜色</Text>
+                </Button>
+              </Col>
+            </Row>
+          </Item>
         </Form>
+        
         {/* <View>
           <Button><Text>类型</Text></Button>
         </View> */}
@@ -135,12 +222,15 @@ export default class SignView extends PureComponent {
                 <ImageBackground 
                   style={SignStyle.GalleryItemViewImageWrapper}
                   source={require('../assets/images/background/summer.png')}>
-                  <View style={SignStyle.GalleryItemViewImage}>
-                    <Image 
-                      style={SignStyle.GalleryItemViewSignView}
-                      source={require('../assets/images/background/sign.png')}
-                      resizeMode='contain'/>
-                  </View>
+                  {
+                    !this.state.uri ? null : 
+                    <View style={SignStyle.GalleryItemViewImage}>
+                      <Image 
+                        style={[SignStyle.GalleryItemViewSignView]}
+                        source={{uri: this.state.uri}}
+                        resizeMode='contain'/>
+                    </View>
+                  }
                 </ImageBackground>
               </View>
             </Col>
@@ -191,7 +281,10 @@ export default class SignView extends PureComponent {
             </Col>
           </Row>
           {
-            this.state.isQrcodeVisible && <View style={[SignStyle.GalleryQRCodeRectView]}></View>
+            this.state.isQrcodeVisible && 
+            <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)} style={[SignStyle.GalleryQRCodeRectView]}>
+              <View ></View>
+            </TouchableOpacity>
           }
         </Grid>
         <Row style={SignStyle.ButtonWrapper}>

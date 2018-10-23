@@ -1,9 +1,9 @@
 import request from '../utils/fetch'
-const api_url = 'http://kezai.myutopa.com:1010/ura'
+// const api_url = 'http://kezai.myutopa.com:1010/ura'
 
 const api = {
   getSignImage (text, style = '901', color = '#000000', decorator = '#ffffff') {
-    return request.postForm(api_url + '/api/art/s/alpha', {
+    return request.postForm('/api/art/s/create', {
       text,
       style,
       color,
