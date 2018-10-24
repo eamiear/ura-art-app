@@ -11,8 +11,10 @@ import {
   Text,
   View
 } from 'react-native';
+import {Root} from 'native-base'
 // import DrawerNavigator from './src/modules/art/DrawerNavigator'
-import SignView from './src/views/SignView'
+// import SignView from './src/views/SignView'
+import MainView from './src/views/MainView'
 
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' +
@@ -39,7 +41,9 @@ export default class App extends Component {
   // }
   render () {
     return (
-      <SignView></SignView>
+      <Root>
+        <MainView></MainView>
+      </Root>
     )
   }
 }
