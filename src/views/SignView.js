@@ -61,20 +61,12 @@ export default class SignView extends PureComponent {
     }
   }
   componentWillMount () {
-
   }
 
   componentDidMount () {
-    // const canvas = new fabric.Canvas('c', {
-    //   width: this.refs.canvas.clientWidth,
-    //   height: this.refs.canvas.clientHeight
-    // });
-
-    // this.fabric = canvas;
   }
   
   componentWillUnmount () {
-
   }
 
   _renderHeader () {
@@ -86,7 +78,7 @@ export default class SignView extends PureComponent {
           </Button>
         </Left>
         <Body>
-          <Title>签名</Title>
+          <Title>一笔签名</Title>
         </Body>
         <Right />
       </Header>
@@ -97,9 +89,6 @@ export default class SignView extends PureComponent {
     const {
       images = []
     } = this.props;
-    const {
-      fabric
-    } = this;
 
     // do some stuff as new props or state have been received aka component did update
     images.map((image, index) => {
@@ -183,28 +172,27 @@ export default class SignView extends PureComponent {
       <Content style={SignStyle.ContentView}>
         <Form>
           <Item inlineLabel style={SignStyle.FormItemView}>
-            <Button danger style={SignStyle.FormItemViewBtn}><Text> 背景 </Text></Button>
-            {/* <Input style={SignStyle.FormItemViewInput} /> */}
+            <Button danger style={[SignStyle.FormItemViewBtn, {borderTopRightRadius: 0, borderBottomRightRadius: 0}]}><Text> 背景 </Text></Button>
             <Input 
               style={SignStyle.FormItemViewInput}
               multiline={false}
               autoFocus={false}
               onChangeText={name => this._getSignName(name)}
-              placeholder="请输入签名"
+              placeholder="请输入姓名..."
               clearButtonMode="while-editing"
               placeholderTextColor="#999999"
               returnKeyType="done"/>
-            <Button danger style={SignStyle.FormItemViewBtn} onPress={() => this._getSignNameImage()}><Text> 签名 </Text></Button>
+            <Button danger style={[SignStyle.FormItemViewBtn, {borderTopLeftRadius: 0, borderBottomLeftRadius: 0}]} onPress={() => this._getSignNameImage()}><Text> 设计 </Text></Button>
           </Item>
           <Item inlineLabel style={SignStyle.FormItemView}>
             <Row>
               <Col style={SignStyle.ButtonWrapperSplitLine}>
-                <Button block danger>
-                  <Text>样式</Text>
+                <Button block danger style={SignStyle.FormItemSignPropBtnView}>
+                  <Text>风格</Text>
                 </Button>
               </Col>
               <Col>
-                <Button block danger>
+                <Button block danger style={SignStyle.FormItemSignPropBtnView}>
                   <Text>颜色</Text>
                 </Button>
               </Col>
@@ -212,9 +200,6 @@ export default class SignView extends PureComponent {
           </Item>
         </Form>
         
-        {/* <View>
-          <Button><Text>类型</Text></Button>
-        </View> */}
         <Grid style={SignStyle.GalleryView}>
           <Row>
             <Col style={SignStyle.GalleryItemView}>
@@ -222,16 +207,16 @@ export default class SignView extends PureComponent {
                 <ImageBackground 
                   style={SignStyle.GalleryItemViewImageWrapper}
                   source={require('../assets/images/background/summer.png')}>
-                  {
-                    !this.state.uri ? null : 
-                    <View style={SignStyle.GalleryItemViewImage}>
-                      <Image 
-                        style={[SignStyle.GalleryItemViewSignView]}
-                        source={{uri: this.state.uri}}
-                        resizeMode='contain'/>
-                    </View>
-                  }
                 </ImageBackground>
+                {
+                  !this.state.uri ? null : 
+                  <View style={SignStyle.GalleryItemViewImage}>
+                    <Image 
+                      style={[SignStyle.GalleryItemViewSignView]}
+                      source={{uri: this.state.uri}}
+                      resizeMode='contain'/>
+                  </View>
+                }
               </View>
             </Col>
             <Col style={SignStyle.GalleryItemView}>
@@ -239,13 +224,13 @@ export default class SignView extends PureComponent {
                 <ImageBackground 
                   style={SignStyle.GalleryItemViewImageWrapper}
                   source={require('../assets/images/background/summer.png')}>
-                  <View style={SignStyle.GalleryItemViewImage}>
-                    <Image 
-                      style={SignStyle.GalleryItemViewSignView}
-                      source={require('../assets/images/background/sign.png')}
-                      resizeMode='contain'/>
-                  </View>
                 </ImageBackground>
+                <View style={SignStyle.GalleryItemViewImage}>
+                  <Image 
+                    style={SignStyle.GalleryItemViewSignView}
+                    source={require('../assets/images/background/sign.png')}
+                    resizeMode='contain'/>
+                </View>
               </View>
             </Col>
           </Row>
@@ -255,13 +240,13 @@ export default class SignView extends PureComponent {
                 <ImageBackground 
                   style={SignStyle.GalleryItemViewImageWrapper}
                   source={require('../assets/images/background/summer.png')}>
-                  <View style={SignStyle.GalleryItemViewImage}>
-                    <Image 
-                      style={SignStyle.GalleryItemViewSignView}
-                      source={require('../assets/images/background/sign.png')}
-                      resizeMode='contain'/>
-                  </View>
                 </ImageBackground>
+                <View style={SignStyle.GalleryItemViewImage}>
+                  <Image 
+                    style={SignStyle.GalleryItemViewSignView}
+                    source={require('../assets/images/background/sign.png')}
+                    resizeMode='contain'/>
+                </View>
               </View>
             </Col>
             <Col style={SignStyle.GalleryItemView}>
@@ -270,13 +255,13 @@ export default class SignView extends PureComponent {
                   resizeMode='stretch'
                   style={SignStyle.GalleryItemViewImageWrapper}
                   source={require('../assets/images/background/summer.png')}>
-                  <View style={SignStyle.GalleryItemViewImage}>
-                    <Image 
-                      style={SignStyle.GalleryItemViewSignView}
-                      source={require('../assets/images/background/sign.png')}
-                      resizeMode='contain'/>
-                  </View>
                 </ImageBackground>
+                <View style={SignStyle.GalleryItemViewImage}>
+                  <Image 
+                    style={SignStyle.GalleryItemViewSignView}
+                    source={require('../assets/images/background/sign.png')}
+                    resizeMode='contain'/>
+                </View>
               </View>
             </Col>
           </Row>
@@ -289,13 +274,13 @@ export default class SignView extends PureComponent {
         </Grid>
         <Row style={SignStyle.ButtonWrapper}>
           <Col style={SignStyle.ButtonWrapperSplitLine}>
-            <Button block danger onPress={()=>this.takeToImage()}>
-              <Text>保存签名.</Text>
+            <Button block danger style={SignStyle.SignActionBtnView} onPress={()=>this.takeToImage()}>
+              <Text>保存到相册</Text>
             </Button>
           </Col>
           <Col>
-            <Button block danger onPress={()=>this.qrcode()}>
-              <Text>展示/隐藏二维码</Text>
+            <Button block danger style={SignStyle.SignActionBtnView} onPress={()=>this.qrcode()}>
+              <Text>隐藏二维码</Text>
             </Button>
           </Col>
         </Row>
