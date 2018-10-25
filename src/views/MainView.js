@@ -8,6 +8,9 @@ import {
 import {Container, Content} from 'native-base';
 import LinearGradient from 'react-native-linear-gradient';
 import SignView from './SignView'
+import StyleView from './StyleView'
+import ColorsView from './ColorsView'
+import BackgroundView from './BackgroundView'
 
 //utils
 import GLOBAL_PARAMS from "../utils/global_params";
@@ -81,6 +84,15 @@ const drawerView = DrawerNavigator({
 const MainView = StackNavigator({
   Home: {
     screen: drawerView
+  },
+  Style: {
+    screen: StyleView
+  },
+  Colors: {
+    screen: ColorsView
+  },
+  Background: {
+    screen: BackgroundView
   }
 }, {
   headerMode: 'none',

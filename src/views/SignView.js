@@ -172,7 +172,9 @@ export default class SignView extends PureComponent {
       <Content style={SignStyle.ContentView}>
         <Form>
           <Item inlineLabel style={SignStyle.FormItemView}>
-            <Button danger style={[SignStyle.FormItemViewBtn, {borderTopRightRadius: 0, borderBottomRightRadius: 0}]}><Text> 背景 </Text></Button>
+            <Button danger style={[SignStyle.FormItemViewBtn, {borderTopRightRadius: 0, borderBottomRightRadius: 0}]}  onPress={() => {
+                this.props.navigation.navigate('Background')
+              }}><Text> 背景 </Text></Button>
             <Input 
               style={SignStyle.FormItemViewInput}
               multiline={false}
@@ -187,12 +189,16 @@ export default class SignView extends PureComponent {
           <Item inlineLabel style={SignStyle.FormItemView}>
             <Row>
               <Col style={SignStyle.ButtonWrapperSplitLine}>
-                <Button block danger style={SignStyle.FormItemSignPropBtnView}>
+                <Button block danger style={SignStyle.FormItemSignPropBtnView} onPress={() => {
+                  this.props.navigation.navigate('Style')
+                }}>
                   <Text>风格</Text>
                 </Button>
               </Col>
               <Col>
-                <Button block danger style={SignStyle.FormItemSignPropBtnView}>
+                <Button block danger style={SignStyle.FormItemSignPropBtnView} onPress={() => {
+                  this.props.navigation.navigate('Colors')
+                }}>
                   <Text>颜色</Text>
                 </Button>
               </Col>
