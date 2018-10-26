@@ -62,19 +62,19 @@ CommonHeader.defaultProps = {
 }
 
 CommonHeader.propTypes = {
-  title: PropTypes.String,
+  title: PropTypes.string,
   hasTabs: PropTypes.bool,
   canBack: PropTypes.bool,
   hasRight: PropTypes.bool,
-  rightIcon: PropTypes.String,
+  rightIcon: PropTypes.string,
   rightClick: PropTypes.func,
   leftElement: PropTypes.element,
   rightElement: PropTypes.element,
   headerStyle: PropTypes.object,
   titleStyle: PropTypes.object,
   leftStyle: PropTypes.object,
-  textColor: PropTypes.String,
-  iosBarStyle: PropTypes.String
+  textColor: PropTypes.string,
+  iosBarStyle: PropTypes.string
 }
 
 export default CommonHeader

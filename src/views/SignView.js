@@ -63,7 +63,14 @@ export default class SignView extends PureComponent {
   componentWillMount () {
   }
 
+  componentDidUpdate() {
+    
+  }
+
   componentDidMount () {
+    if (this.props.navigation.state.params) {
+      
+    }
   }
   
   componentWillUnmount () {
@@ -83,20 +90,6 @@ export default class SignView extends PureComponent {
         <Right />
       </Header>
     )
-  }
-
-  componentDidUpdate() {
-    const {
-      images = []
-    } = this.props;
-
-    // do some stuff as new props or state have been received aka component did update
-    images.map((image, index) => {
-      fabric.Image.fromURL(image.url, {
-        top: 0,
-        left: index * 100 // place a new image left to right, every 100px
-      });
-    });
   }
 
   _renderBottomView () {
