@@ -277,7 +277,8 @@ export default class StyleView extends PureComponent {
       "382" : require('../assets/images/styles/a382.gif'),
       "383" : require('../assets/images/styles/a383.gif')
     },
-    selectedStyleList: []
+    selectedStyleList: [],
+    selectedStatus: []
   }
 
   componentDidMount () {
@@ -293,7 +294,7 @@ export default class StyleView extends PureComponent {
   }
 
   componentWillUpdate (nextProps, nextState) {
-    
+
   }
   componentDidUpdate(prevProps, prevState) {
 
@@ -308,7 +309,7 @@ export default class StyleView extends PureComponent {
     return Object.keys(this.state.styleData).map((item, index) => (
       <TouchableOpacity key={index} onPress={() => this._selectedStyle({[this.state.styleData[item]]: this.state.styleData[item]})}>
         <View 
-          style={[FontStyle.StyleListItemView]}
+          style={[FontStyle.StyleListItemView, this.state.selectedStatus.includes(this.state.styleData[item]) && FontStyle.StyleListItemViewActive]}
           >
           {/* , this.state.selectedStyleList[this.state.styleData[item]] */}
           <Image 
