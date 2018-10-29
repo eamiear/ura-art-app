@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import {View, TouchableOpacity, Image, ImageBackground } from 'react-native'
+import {View, TouchableOpacity, Image, ImageBackground, AppState } from 'react-native'
 import {
   Container,
   Button,
@@ -57,7 +57,7 @@ export default class SignView extends PureComponent {
         uri: '',
         style: '',
         color: ''
-      }
+      },
     }
   }
   componentWillMount () {
@@ -68,9 +68,30 @@ export default class SignView extends PureComponent {
   }
 
   componentDidMount () {
-    if (this.props.navigation.state.params) {
+    console.log('navigaton state ', this.props.navigation.state)
+    AppState.addEventListener('change', (nextAppState) =>{
+      console.log('AppState chagne   ', nextAppState)
+    })
+    const {params} = this.props.navigation.state
+    if (params) {
+      if (params.type === 'style') {
+        console.log('styles ', params.content);
+        this.state.style = params.content
+      }
+  
+      if (params.type === 'background') {
+        console.log('background ', params.content);
+        this.state.uri = params.content
+      }
       
+      if (params.type === 'color') {
+        console.log('color ', params.content);
+        this.state.color = params.content
+      }
     }
+    console.log('color ', this.state.color)
+    console.log('style ', this.state.style)
+    console.log('uri ', this.state.uri)
   }
   
   componentWillUnmount () {

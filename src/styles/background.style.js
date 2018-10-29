@@ -2,13 +2,13 @@ import {StyleSheet,Platform} from 'react-native';
 import GLOBAL_PARAMS from '../utils/global_params';
 
 export default StyleSheet.create({
-  StyleListView: {
+  BackgroundListView: {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
-  StyleListItemView: {
+  BackgroundListItemView: {
     position: 'relative',
     // backgroundColor: '#FFCCCC',
     padding: 5,
@@ -18,16 +18,16 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  StyleListItemViewActive: {
+  BackgroundListItemViewActive: {
     // backgroundColor: '#FF66CC'
     backgroundColor: 'red'
   },
-  StyleListItemImageView: {
+  BackgroundListItemImageView: {
     width: '100%',
     height: '100%',
     maxWidth: '100%',
   },
-  StyleListItemTextView: {
+  BackgroundListItemTextView: {
     fontSize: 10,
     position: 'absolute',
     bottom: 2,
