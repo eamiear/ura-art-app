@@ -22,9 +22,16 @@ import {
    NavigationActions
 } from 'react-navigation';
 
+const SignViewScreen = StackNavigator({
+  Sign: SignView,
+  Style: StyleView,
+  Colors: ColorsView,
+  Background: BackgroundView
+})
+
 const drawerView = DrawerNavigator({
   SignViewDrawer: {
-    screen: SignView
+    screen: SignViewScreen
   }
 }, {
     drawerWidth: GLOBAL_PARAMS._winWidth * 0.75,
@@ -85,15 +92,15 @@ const MainView = StackNavigator({
   Home: {
     screen: drawerView
   },
-  Style: {
-    screen: StyleView
-  },
-  Colors: {
-    screen: ColorsView
-  },
-  Background: {
-    screen: BackgroundView
-  }
+  // Style: {
+  //   screen: StyleView
+  // },
+  // Colors: {
+  //   screen: ColorsView
+  // },
+  // Background: {
+  //   screen: BackgroundView
+  // }
 }, {
   headerMode: 'none',
   cardStyle: {
