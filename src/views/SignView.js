@@ -29,20 +29,15 @@ export default class SignView extends PureComponent {
 
   static navigationOptions = ({navigation}) => ({
     headerTitle: (
-        <TouchableOpacity>
-            {/* <Image source={require('../../img/home/search_icon.png')} style={styles.searchIcon} />
-            <Paragraph>一点点</Paragraph> */}
-            <Text>一笔签名</Text>
-        </TouchableOpacity>
+        // <TouchableOpacity>
+        //     {/* <Image source={require('../../img/home/search_icon.png')} style={styles.searchIcon} />
+        //     <Paragraph>一点点</Paragraph> */}
+        //     <Text>一笔签名</Text>
+        // </TouchableOpacity>
+        <Text>一笔签名</Text>
     ),
     headerRight: (
-        // <NavigationItem
-        //     icon={require('../../img/mine/icon_navigation_item_message_white.png')}
-        //     onPress={() => {
-
-        //     }}
-        // />
-        <Icon name="star" style={{ fontSize: 15, color: "#fff", lineHeight: 20 }}/>
+        <Icon name="ios-home" style={{ fontSize: 15, color: "#fff", lineHeight: 20 }}/>
     ),
     headerLeft: (
         // <NavigationItem
