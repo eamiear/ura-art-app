@@ -26,6 +26,37 @@ import api from '../api/art';
 import SignStyle from '../styles/sign.style'
 
 export default class SignView extends PureComponent {
+
+  static navigationOptions = ({navigation}) => ({
+    headerTitle: (
+        <TouchableOpacity>
+            {/* <Image source={require('../../img/home/search_icon.png')} style={styles.searchIcon} />
+            <Paragraph>一点点</Paragraph> */}
+            <Text>一笔签名</Text>
+        </TouchableOpacity>
+    ),
+    headerRight: (
+        // <NavigationItem
+        //     icon={require('../../img/mine/icon_navigation_item_message_white.png')}
+        //     onPress={() => {
+
+        //     }}
+        // />
+        <Icon name="star" style={{ fontSize: 15, color: "#fff", lineHeight: 20 }}/>
+    ),
+    headerLeft: (
+        // <NavigationItem
+        //     title='福州'
+        //     titleStyle={{color: 'white'}}
+        //     onPress={() => {
+
+        //     }}
+        // />
+        <Icon name="star" style={{ fontSize: 15, color: "#fff", lineHeight: 20 }}/>
+    ),
+    headerStyle: {backgroundColor: '#fff'},
+  })
+
   constructor() {
     super()
     this.refs = {
@@ -98,19 +129,19 @@ export default class SignView extends PureComponent {
   }
 
   _renderHeader () {
-    return (
-      <Header style={SignStyle.HeaderView}>
-        <Left>
-          <Button transparent>
-            <Icon name='beer' />
-          </Button>
-        </Left>
-        <Body>
-          <Title>一笔签名</Title>
-        </Body>
-        <Right />
-      </Header>
-    )
+    // return (
+    //   // <Header style={SignStyle.HeaderView}>
+    //   //   <Left>
+    //   //     <Button transparent>
+    //   //       <Icon name='beer' />
+    //   //     </Button>
+    //   //   </Left>
+    //   //   <Body>
+    //   //     <Title>一笔签名</Title>
+    //   //   </Body>
+    //   //   <Right />
+    //   // </Header>
+    // )
   }
 
   _renderBottomView () {
